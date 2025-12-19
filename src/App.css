@@ -1,13 +1,14 @@
-/* Importamos fuentes elegantes de Google Fonts */
+/* Importamos fuentes elegantes */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap');
 
 :root {
-  --color-primary: #8aaadd; /* Tono azulado suave del PDF */
-  --color-secondary: #555;
-  --color-gold: #c5a059;
-  --bg-color: #f9f9f9;
+  --color-primary: #6B8E23; /* Un verde olivo elegante o el azul del PDF, ajusta a gusto */
+  --color-text: #444;
+  --color-gold: #D4AF37;
+  --bg-color: #f4f4f4;
 }
 
+/* Reset y base */
 body {
   margin: 0;
   padding: 0;
@@ -19,18 +20,31 @@ body {
 /* --- ESTILOS DEL SOBRE (PANTALLA DE INICIO) --- */
 .envelope-container {
   height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
-  transition: opacity 1s ease;
+  position: fixed; /* Fijo para cubrir todo */
+  top: 0;
+  left: 0;
+  z-index: 100;
+  transition: opacity 1s ease, visibility 1s;
 }
 
+.envelope-container.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* El sobre en sí */
 .envelope-wrapper {
   position: relative;
   cursor: pointer;
   animation: float 3s ease-in-out infinite;
+  transform-origin: center;
 }
 
 .envelope {
@@ -38,152 +52,188 @@ body {
   height: 200px;
   background-color: #fff;
   position: relative;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
   border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10;
 }
 
-/* Solapa del sobre (Triángulo) */
+/* Solapa del sobre */
 .envelope::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 0;
-  height: 0;
   border-left: 150px solid transparent;
   border-right: 150px solid transparent;
-  border-top: 100px solid #f0f0f0; /* Color solapa cerrada */
-  transform-origin: top;
+  border-top: 110px solid #f2f2f2;
   transition: transform 0.6s;
-  z-index: 20;
+  transform-origin: top;
+  z-index: 5;
+}
+
+/* Efecto al abrir (Hover o clase open) */
+.envelope-container.open .envelope::before {
+  transform: rotateX(180deg);
+  z-index: 0;
 }
 
 /* Sello de lacre */
 .wax-seal {
-  width: 40px;
-  height: 40px;
-  background-color: var(--color-gold);
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle at 30% 30%, #ffd700, #b8860b);
   border-radius: 50%;
   position: absolute;
-  top: 50%; /* Ajustado */
-  z-index: 30;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   font-family: 'Great Vibes', cursive;
-  font-size: 1.2rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  transform: translateY(-50%); /* Centrado vertical */
+  font-size: 1.5rem;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  border: 2px solid #daa520;
 }
 
 .click-hint {
-  margin-top: 40px;
-  color: var(--color-secondary);
+  margin-top: 60px;
+  color: #666;
   font-size: 0.9rem;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
   animation: pulse 2s infinite;
 }
 
-/* --- ANIMACIONES --- */
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
-  100% { transform: translateY(0px); }
-}
-
-@keyframes pulse {
-  0% { opacity: 0.5; }
-  50% { opacity: 1; }
-  100% { opacity: 0.5; }
-}
-
-/* Clase para ocultar el sobre al abrir */
-.fade-out {
-  opacity: 0;
-  pointer-events: none;
-  display: none;
-}
-
 /* --- CONTENIDO DE LA INVITACIÓN --- */
-.invitation-content {
-  max-width: 600px;
-  margin: 0 auto;
-  background: white;
-  padding: 40px 20px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.05);
+.invitation-card {
+  max-width: 500px; /* Ancho máximo de tarjeta física */
+  margin: 40px auto;
+  background-color: #fff;
+  background-image: url("https://www.transparenttextures.com/patterns/cream-paper.png"); /* Textura papel */
+  padding: 40px 30px;
   text-align: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+  border-radius: 8px;
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease, transform 1s ease;
-  display: none; /* Oculto inicialmente */
+  transform: translateY(30px);
+  transition: opacity 1s ease 0.5s, transform 1s ease 0.5s; /* Delay para que abra el sobre primero */
 }
 
-.invitation-content.visible {
-  display: block;
+.invitation-card.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
+/* Tipografía y Elementos */
 h1 {
   font-family: 'Great Vibes', cursive;
-  font-size: 3.5rem;
+  font-size: 3.8rem;
   color: var(--color-primary);
-  margin-bottom: 10px;
+  margin: 10px 0;
+  line-height: 1.2;
 }
 
 h2 {
   font-family: 'Cinzel', serif;
-  font-size: 1.5rem;
-  color: var(--color-secondary);
+  font-size: 1.4rem;
+  color: var(--color-text);
   margin-top: 30px;
+  margin-bottom: 15px;
   border-bottom: 1px solid #ddd;
   display: inline-block;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
 }
 
-p {
-  color: #666;
-  line-height: 1.6;
+.intro {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.date-box {
-  border: 1px solid var(--color-primary);
-  padding: 20px;
+.date-block {
+  border-top: 1px solid var(--color-gold);
+  border-bottom: 1px solid var(--color-gold);
+  padding: 15px 0;
   margin: 30px 0;
-  border-radius: 8px;
 }
 
 .big-date {
-  font-size: 2rem;
-  font-weight: bold;
-  color: var(--color-secondary);
-  display: block;
-  margin: 10px 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  letter-spacing: 2px;
 }
 
+.place {
+  font-style: italic;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Botones */
 .btn {
   display: inline-block;
   background-color: var(--color-primary);
   color: white;
   padding: 12px 25px;
-  margin: 10px;
   text-decoration: none;
-  border-radius: 25px;
-  transition: background 0.3s;
+  border-radius: 30px;
+  font-size: 0.9rem;
   font-weight: 600;
-  border: none;
-  cursor: pointer;
+  letter-spacing: 1px;
+  transition: transform 0.2s, background 0.2s;
+  margin-top: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .btn:hover {
-  background-color: #6a8bc4;
+  background-color: #55701b;
+  transform: translateY(-2px);
 }
 
-.btn-secondary {
-  background-color: var(--color-gold);
+.btn.whatsapp {
+  background-color: #25D366;
+}
+.btn.whatsapp:hover {
+  background-color: #1ebc57;
+}
+
+/* Animaciones */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* --- MEDIA QUERIES (RESPONSIVE) --- */
+
+/* Para PC / Escritorio */
+@media (min-width: 768px) {
+  body {
+    /* Fondo oscuro/elegante para el cuerpo en PC para resaltar la tarjeta blanca */
+    background-color: #e6e6e6; 
+  }
+  
+  .invitation-card {
+    margin: 60px auto;
+    padding: 60px;
+    border: 1px solid #ddd;
+  }
+
+  /* Hacemos el sobre más grande en PC para que no se vea ridículo */
+  .envelope-wrapper {
+    transform: scale(1.5); 
+  }
 }
