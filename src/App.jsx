@@ -33,7 +33,7 @@ function App() {
       <div className={`envelope-overlay ${isOpen ? 'open fade-out' : ''}`}>
         <div className="envelope-wrapper" onClick={handleOpen}>
           <div className="envelope">
-            <div className="wax-seal">J&G</div>
+            <div className="wax-seal" translate='no'>J&G</div>
           </div>
         </div>
         <div className="click-hint">TOCA PARA ABRIR</div>
@@ -48,7 +48,7 @@ function App() {
             <div className="hero-overlay"></div>
             <div className="hero-content" data-aos="zoom-in">
               <p className="intro-text">Con la bendición de nuestros padres</p>
-              <h1>John & Germania</h1>
+              <h1 className='nontranslate' translate='no'>John & Germania</h1>
               <p style={{fontStyle: 'italic', marginTop: '10px'}}>¡Nos Casamos!</p>
               <div className="hero-date">
                 SÁBADO 11 ABRIL 2026
