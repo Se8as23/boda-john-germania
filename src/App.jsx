@@ -80,7 +80,7 @@ function App() {
                 <div className="event-time">17:00 H</div>
                 <p>Parroquia / Capilla</p>
                 <p style={{fontSize: '0.9rem', color: '#777'}}>Vía Monay Baguanchi Paccha km 4 1/2</p>
-                <a href="https://goo.gl/maps/AQUI_LINK_EXACTO" target="_blank" className="btn-map">
+                <a href="https://maps.app.goo.gl/UGcvP1QRpdSGd3Mp8" target="_blank" className="btn-map">
                   Ver Mapa
                 </a>
               </div>
@@ -92,7 +92,7 @@ function App() {
                 <div className="event-time">19:00 H</div>
                 <p>Centro de Convenciones Baguanchi</p>
                 <p style={{fontSize: '0.9rem', color: '#777'}}>Vía Monay Baguanchi Paccha km 4 1/2</p>
-                <a href="https://goo.gl/maps/AQUI_LINK_EXACTO" target="_blank" className="btn-map">
+                <a href="https://maps.app.goo.gl/UGcvP1QRpdSGd3Mp8" target="_blank" className="btn-map">
                   Ver Mapa
                 </a>
               </div>
@@ -116,7 +116,7 @@ function App() {
               <p style={{marginBottom: '20px'}}>Por favor, confirma tu asistencia:</p>
               
               <a 
-                href="https://wa.me/593XXXXXXXX?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20boda%20de%20John%20y%20Germania"
+                href="https://wa.me/593994050290?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20boda%20de%20John%20y%20Germania"
                 className="btn-whatsapp"
                 target="_blank"
               >
