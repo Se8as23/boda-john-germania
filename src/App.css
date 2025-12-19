@@ -1,32 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
 
 :root {
-  --color-primary: #5e7385;
+  --color-primary: #5e7385; /* Azul acero (según invitación) */
   --color-gold: #c5a059;
-  --bg-light: #f9f9f9;
+  --bg-light: #f8f9fa;
+  --text-dark: #333;
+}
+
+* {
+  box-sizing: border-box; /* Vital para que los paddings no rompan el ancho */
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  overflow-x: hidden;
   background-color: #fff;
+  color: var(--text-dark);
+  overflow-x: hidden; /* Evita scroll horizontal accidental */
+  -webkit-font-smoothing: antialiased;
 }
 
-/* --- ESTILOS DEL SOBRE (PANTALLA CARGA) --- */
+/* --- PANTALLA DE CARGA (EL SOBRE) --- */
 .envelope-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100dvh; /* Usamos dvh para móviles */
   background: linear-gradient(135deg, #eef2f3 0%, #8e9eab 100%);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  transition: opacity 1s ease, visibility 1s;
+  transition: opacity 0.8s ease, visibility 0.8s;
 }
 
 .envelope-overlay.fade-out {
@@ -35,187 +43,252 @@ body {
   pointer-events: none;
 }
 
-/* (Copia aquí los estilos del .envelope, .wax-seal del paso anterior si se borraron, 
-   o mantén los que ya tenías para el sobre. Son los mismos) */
-.envelope-wrapper { position: relative; cursor: pointer; animation: float 3s infinite; }
-.envelope { width: 320px; height: 220px; background: #fff; display: flex; justify-content: center; align-items: center; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
-.envelope::before { content:''; position: absolute; top:0; left:0; border-left: 160px solid transparent; border-right: 160px solid transparent; border-top: 120px solid #f8f8f8; transition: transform 0.8s; transform-origin: top; z-index: 5; }
-.envelope-container.open .envelope::before { transform: rotateX(180deg); z-index: 0; }
-.wax-seal { width: 50px; height: 50px; background: goldenrod; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-family: 'Great Vibes'; z-index: 10; position: absolute; }
-.click-hint { margin-top: 80px; color: white; letter-spacing: 3px; font-size: 0.8rem; position: absolute; bottom: 20%; }
+.envelope-wrapper {
+  position: relative;
+  /* Animación suave flotando */
+  animation: float 3s ease-in-out infinite; 
+  cursor: pointer;
+}
 
-/* --- SITIO WEB DE BODA (FULL SCREEN) --- */
-.wedding-site {
+.envelope {
+  width: 280px; /* Un poco más pequeño para móviles estrechos */
+  height: 180px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  position: relative;
+}
+
+.envelope::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-left: 140px solid transparent;
+  border-right: 140px solid transparent;
+  border-top: 110px solid #f0f0f0;
+  transform-origin: top;
+  transition: transform 0.6s ease;
+  z-index: 5;
+}
+
+.envelope-overlay.open .envelope::before {
+  transform: rotateX(180deg);
+  z-index: 0;
+}
+
+.wax-seal {
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle at 30% 30%, #ffd700, #b8860b);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.4rem;
+  z-index: 10;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  position: absolute;
+}
+
+.click-hint {
+  margin-top: 60px;
+  color: white;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: pulse 2s infinite;
+}
+
+/* --- SITIO PRINCIPAL (MOBILE FIRST) --- */
+.main-container {
   width: 100%;
   overflow-x: hidden;
 }
 
-/* HERO SECTION */
+/* Hero Section (Portada) */
 .hero-section {
-  height: 100vh; /* Ocupa toda la pantalla */
+  height: 100dvh; /* Pantalla completa exacta en móvil */
   width: 100%;
-  background-image: url('https://images.unsplash.com/photo-1511285560982-1351cdeb9821?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+  background-image: url('https://images.unsplash.com/photo-1511285560982-1351cdeb9821?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
   background-size: cover;
   background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
   position: relative;
 }
 
-/* Capa oscura sobre la foto hero */
-.hero-section::after {
-  content: '';
+.hero-overlay {
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.4);
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4); /* Oscurecer foto para leer texto */
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
+  text-align: center;
   color: white;
-  border: 1px solid rgba(255,255,255,0.5);
-  padding: 40px;
-  backdrop-filter: blur(2px);
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,0.6);
+  margin: 20px;
+  backdrop-filter: blur(3px);
+  border-radius: 4px;
 }
 
-.main-title {
+.intro-text {
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+h1 {
   font-family: 'Great Vibes', cursive;
-  font-size: 5rem;
-  margin: 10px 0;
-  text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  font-size: 4rem; /* Grande pero ajustado */
+  margin: 0;
+  line-height: 1.1;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .hero-date {
   font-family: 'Cinzel', serif;
-  font-size: 1.5rem;
-  letter-spacing: 5px;
+  font-size: 1.2rem;
   margin-top: 20px;
+  padding-top: 15px;
   border-top: 1px solid white;
-  border-bottom: 1px solid white;
-  padding: 10px 0;
 }
 
-/* STORY SECTION (Alternada) */
-.story-section {
-  padding: 80px 20px;
-  background-color: #fff;
-  max-width: 1200px;
-  margin: 0 auto;
+/* Secciones Generales */
+section {
+  padding: 50px 20px; /* Padding cómodo para móvil */
+  text-align: center;
 }
 
-.story-row {
-  display: flex;
-  align-items: center;
-  margin-bottom: 80px;
-  gap: 50px;
-  flex-direction: column; /* Mobile first */
-}
-
-.story-img img {
-  width: 100%;
-  max-width: 500px;
-  border-radius: 10px;
-  box-shadow: 10px 10px 0 var(--color-gold);
-}
-
-.story-text h2 {
+.section-title {
   font-family: 'Cinzel', serif;
+  font-size: 1.8rem;
   color: var(--color-primary);
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-/* PC: Lado a Lado */
-@media (min-width: 768px) {
-  .story-row {
-    flex-direction: row; /* Lado a lado */
-  }
-  .story-row.reverse {
-    flex-direction: row-reverse; /* Invertir orden */
-  }
-  .story-text, .story-img {
-    flex: 1;
-  }
+/* Historia (Fotos) */
+.story-block {
+  margin-bottom: 50px;
 }
 
-.story-full {
-  text-align: center;
-  margin-top: 50px;
-}
-.story-full img {
+.story-img {
   width: 100%;
-  max-width: 800px;
-  border-radius: 4px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
 }
 
-/* DETAILS SECTION */
-.details-section {
-  padding: 80px 20px;
-  background-color: var(--bg-light);
+.story-text h3 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+  color: var(--color-gold);
+  margin: 10px 0;
 }
 
-.ornamental-box {
-  max-width: 1000px;
-  margin: 0 auto;
-  text-align: center;
+.story-text p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 0.95rem;
 }
 
-.events-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-  margin-top: 40px;
-}
-
+/* Tarjetas de Eventos (Iglesia/Fiesta) */
 .event-card {
   background: white;
-  padding: 40px;
-  flex: 1;
-  min-width: 300px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-  border-top: 3px solid var(--color-gold);
+  padding: 30px 20px;
+  margin-bottom: 30px; /* Separación entre tarjetas */
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  border-top: 4px solid var(--color-gold);
 }
 
-.btn-outline {
+.event-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.event-time {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  margin: 10px 0;
+}
+
+.btn-map {
   display: inline-block;
   margin-top: 15px;
-  padding: 10px 20px;
+  padding: 10px 25px;
   border: 1px solid var(--color-primary);
   color: var(--color-primary);
   text-decoration: none;
-  font-size: 0.8rem;
-  transition: all 0.3s;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  transition: background 0.3s;
 }
-.btn-outline:hover { background: var(--color-primary); color: white; }
 
-/* RSVP SECTION */
-.rsvp-section {
-  padding: 80px 20px;
-  text-align: center;
+.btn-map:active {
   background: var(--color-primary);
   color: white;
 }
 
-.btn-main {
-  display: inline-block;
-  background: white;
-  color: var(--color-primary);
-  padding: 15px 40px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: bold;
-  margin-top: 30px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+/* Footer Confirmación */
+.rsvp-footer {
+  background: var(--color-primary);
+  color: white;
+  padding: 60px 20px;
 }
 
-.site-footer {
-  text-align: center;
+.rsvp-details {
+  background: rgba(255,255,255,0.1);
   padding: 20px;
-  background: #333;
-  color: #777;
-  font-size: 0.8rem;
+  border-radius: 8px;
+  margin-bottom: 30px;
 }
 
+.btn-whatsapp {
+  display: block; /* Botón ancho completo */
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  background-color: #25D366; /* Verde WhatsApp */
+  color: white;
+  padding: 15px 0;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+  animation: pulse-btn 2s infinite;
+}
+
+/* Animaciones */
 @keyframes float { 0% {transform: translateY(0);} 50% {transform: translateY(-10px);} 100% {transform: translateY(0);} }
+@keyframes pulse { 0% {opacity: 0.5;} 50% {opacity: 1;} 100% {opacity: 0.5;} }
+@keyframes pulse-btn { 0% {transform: scale(1);} 50% {transform: scale(1.05);} 100% {transform: scale(1);} }
+
+/* Ajustes mínimos para PC (para que no se rompa si alguien abre ahí) */
+@media (min-width: 768px) {
+  .hero-content { padding: 60px; max-width: 600px; }
+  .story-block { display: flex; align-items: center; gap: 40px; text-align: left; }
+  .story-block:nth-child(even) { flex-direction: row-reverse; text-align: right; }
+  .story-img { width: 50%; margin-bottom: 0; }
+  .story-text { width: 50%; }
+  .events-container { display: flex; gap: 20px; justify-content: center; }
+  .event-card { width: 300px; }
+}
