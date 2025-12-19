@@ -3,10 +3,11 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import './App.css';
 
+import FOTO_3 from './assets/fotogyj1.png';
 // IMAGEN PLACEHOLDER (Reemplazar cuando tengas las fotos)
 const FOTO_1 = "https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
 const FOTO_2 = "https://images.unsplash.com/photo-1511285560982-1351cdeb9821?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80";
-const FOTO_3 = "/dist/assets/fotogyj1.png"; 
+
 
 
 function App() {
