@@ -6,6 +6,8 @@ import './App.css';
 // IMAGEN PLACEHOLDER (Reemplazar cuando tengas las fotos)
 const FOTO_1 = "https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
 const FOTO_2 = "https://images.unsplash.com/photo-1511285560982-1351cdeb9821?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80";
+const FOTO_3 = "/dist/assets/fotogyj1.png"; 
+
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,7 +61,7 @@ function App() {
           {/* 2. FRASE / HISTORIA */}
           <section className="story-section">
             <div className="story-block" data-aos="fade-up">
-              <img src={FOTO_1} alt="Pareja" className="story-img"/>
+              <img src={FOTO_3} alt="Pareja" className="story-img"/>
               <div className="story-text">
                 <h3>Nuestra Historia</h3>
                 <p>"Cada día que hemos compartido ha sido maravilloso, por eso nos encantaría que nos acompañes en uno de los momentos más especiales de nuestras vidas."</p>
