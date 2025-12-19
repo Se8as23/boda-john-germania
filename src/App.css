@@ -1,280 +1,221 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
 
 :root {
-  --color-primary: #5e7385; /* Azul grisáceo elegante (basado en el PDF) */
-  --color-text: #444;
-  --color-gold: #c5a059; /* Dorado mate */
-  --bg-color: #f0f2f5;
+  --color-primary: #5e7385;
+  --color-gold: #c5a059;
+  --bg-light: #f9f9f9;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--bg-color);
   font-family: 'Montserrat', sans-serif;
   overflow-x: hidden;
+  background-color: #fff;
 }
 
-/* --- SOBRE (Igual que antes pero optimizado) --- */
-.envelope-container {
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #eef2f3 0%, #8e9eab 100%); /* Gradiente metálico suave */
+/* --- ESTILOS DEL SOBRE (PANTALLA CARGA) --- */
+.envelope-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
-  transition: opacity 1.2s ease, visibility 1.2s;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #eef2f3 0%, #8e9eab 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 1s ease, visibility 1s;
 }
 
-.envelope-container.hidden {
+.envelope-overlay.fade-out {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
 
-.envelope-wrapper {
-  position: relative;
-  cursor: pointer;
-  animation: float 3s ease-in-out infinite;
+/* (Copia aquí los estilos del .envelope, .wax-seal del paso anterior si se borraron, 
+   o mantén los que ya tenías para el sobre. Son los mismos) */
+.envelope-wrapper { position: relative; cursor: pointer; animation: float 3s infinite; }
+.envelope { width: 320px; height: 220px; background: #fff; display: flex; justify-content: center; align-items: center; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+.envelope::before { content:''; position: absolute; top:0; left:0; border-left: 160px solid transparent; border-right: 160px solid transparent; border-top: 120px solid #f8f8f8; transition: transform 0.8s; transform-origin: top; z-index: 5; }
+.envelope-container.open .envelope::before { transform: rotateX(180deg); z-index: 0; }
+.wax-seal { width: 50px; height: 50px; background: goldenrod; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-family: 'Great Vibes'; z-index: 10; position: absolute; }
+.click-hint { margin-top: 80px; color: white; letter-spacing: 3px; font-size: 0.8rem; position: absolute; bottom: 20%; }
+
+/* --- SITIO WEB DE BODA (FULL SCREEN) --- */
+.wedding-site {
+  width: 100%;
+  overflow-x: hidden;
 }
 
-.envelope {
-  width: 320px;
-  height: 220px;
-  background-color: #fff;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-  border-radius: 4px;
+/* HERO SECTION */
+.hero-section {
+  height: 100vh; /* Ocupa toda la pantalla */
+  width: 100%;
+  background-image: url('https://images.unsplash.com/photo-1511285560982-1351cdeb9821?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   position: relative;
 }
 
-/* Solapa */
-.envelope::before {
+/* Capa oscura sobre la foto hero */
+.hero-section::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  border-left: 160px solid transparent;
-  border-right: 160px solid transparent;
-  border-top: 120px solid #f8f8f8; /* Color solapa */
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transform-origin: top;
-  z-index: 5;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4);
 }
 
-.envelope-container.open .envelope::before {
-  transform: rotateX(180deg);
-  z-index: 0;
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.5);
+  padding: 40px;
+  backdrop-filter: blur(2px);
 }
 
-/* Sello */
-.wax-seal {
-  width: 55px;
-  height: 55px;
-  background: radial-gradient(circle at 30% 30%, #d4af37, #b8860b);
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
+.main-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 5rem;
+  margin: 10px 0;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.hero-date {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  letter-spacing: 5px;
+  margin-top: 20px;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  padding: 10px 0;
+}
+
+/* STORY SECTION (Alternada) */
+.story-section {
+  padding: 80px 20px;
+  background-color: #fff;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.story-row {
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: white;
-  font-family: 'Great Vibes', cursive;
-  font-size: 1.6rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  border: 2px solid #daa520;
+  margin-bottom: 80px;
+  gap: 50px;
+  flex-direction: column; /* Mobile first */
 }
 
-.click-hint {
-  margin-top: 80px;
-  color: #fff;
-  font-size: 0.8rem;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-  animation: pulse 2s infinite;
+.story-img img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 10px 10px 0 var(--color-gold);
 }
 
-/* --- TARJETA DE INVITACIÓN (El cambio "Pro") --- */
-.invitation-card {
-  max-width: 800px; /* MUCHO MÁS ANCHO EN PC */
-  margin: 40px auto;
-  background-color: #fff;
-  box-shadow: 0 15px 50px rgba(0,0,0,0.1);
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 1s ease 0.5s, transform 1s ease 0.5s;
-  position: relative;
-  overflow: hidden; /* Para contener bordes */
+.story-text h2 {
+  font-family: 'Cinzel', serif;
+  color: var(--color-primary);
 }
 
-/* Borde Decorativo Interno */
-.ornamental-border {
-  border: 1px solid var(--color-gold);
-  margin: 15px; /* Margen para el borde doble */
-  padding: 40px 20px;
-  outline: 1px solid var(--color-gold); /* Doble línea */
-  outline-offset: -8px;
+/* PC: Lado a Lado */
+@media (min-width: 768px) {
+  .story-row {
+    flex-direction: row; /* Lado a lado */
+  }
+  .story-row.reverse {
+    flex-direction: row-reverse; /* Invertir orden */
+  }
+  .story-text, .story-img {
+    flex: 1;
+  }
+}
+
+.story-full {
+  text-align: center;
+  margin-top: 50px;
+}
+.story-full img {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 4px;
+}
+
+/* DETAILS SECTION */
+.details-section {
+  padding: 80px 20px;
+  background-color: var(--bg-light);
+}
+
+.ornamental-box {
+  max-width: 1000px;
+  margin: 0 auto;
   text-align: center;
 }
 
-.invitation-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Tipografía */
-h1 {
-  font-family: 'Great Vibes', cursive;
-  font-size: 4.5rem; /* Título gigante */
-  color: var(--color-primary);
-  margin: 10px 0 20px 0;
-  line-height: 1.1;
-}
-
-h2 {
-  font-family: 'Cinzel', serif;
-  font-size: 1.3rem;
-  color: var(--color-text);
-  margin-bottom: 15px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.intro {
-  font-size: 0.85rem;
-  color: #888;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 10px;
-}
-
-.date-block {
-  margin: 30px 0;
-  padding: 20px 0;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-}
-
-.big-date {
-  font-family: 'Cinzel', serif;
-  font-size: 2rem;
-  color: #333;
-  display: block;
-}
-
-.city {
-  font-size: 0.9rem;
-  color: #888;
-  letter-spacing: 3px;
-  margin-top: 10px;
-  text-transform: uppercase;
-}
-
-/* GRID SYSTEM PARA EVENTOS */
-.events-row {
+.events-grid {
   display: flex;
-  flex-direction: column; /* Mobile first: columna */
+  flex-wrap: wrap;
   gap: 30px;
+  justify-content: center;
   margin-top: 40px;
 }
 
-.event-col {
+.event-card {
+  background: white;
+  padding: 40px;
   flex: 1;
-  padding: 0 10px;
+  min-width: 300px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border-top: 3px solid var(--color-gold);
 }
 
-/* Detalles */
-.details-text {
-  font-size: 0.95rem;
-  color: #666;
-  line-height: 1.6;
-  margin-bottom: 5px;
-}
-
-/* Botones */
-.btn {
+.btn-outline {
   display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
   border: 1px solid var(--color-primary);
   color: var(--color-primary);
-  padding: 10px 25px;
   text-decoration: none;
   font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-top: 15px;
   transition: all 0.3s;
 }
+.btn-outline:hover { background: var(--color-primary); color: white; }
 
-.btn:hover {
-  background-color: var(--color-primary);
+/* RSVP SECTION */
+.rsvp-section {
+  padding: 80px 20px;
+  text-align: center;
+  background: var(--color-primary);
   color: white;
 }
 
 .btn-main {
-  background-color: var(--color-primary);
-  color: white;
-  border: none;
+  display: inline-block;
+  background: white;
+  color: var(--color-primary);
   padding: 15px 40px;
-  font-size: 1rem;
-  border-radius: 4px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
   margin-top: 30px;
-  cursor: pointer;
-}
-
-.btn-main:hover {
-  background-color: #4a5d6b;
-  transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-/* --- MEDIA QUERIES (DESKTOP) --- */
-@media (min-width: 768px) {
-  .invitation-card {
-    margin: 60px auto;
-  }
-  
-  .ornamental-border {
-    padding: 60px 40px;
-    margin: 20px;
-  }
-
-  /* Aquí está la magia: pone los eventos lado a lado */
-  .events-row {
-    flex-direction: row; /* Fila */
-    justify-content: center;
-  }
-  
-  .event-col {
-    border-right: 1px solid #eee; /* Línea divisoria */
-  }
-  
-  .event-col:last-child {
-    border-right: none;
-  }
-
-  h1 {
-    font-size: 5.5rem;
-  }
+.site-footer {
+  text-align: center;
+  padding: 20px;
+  background: #333;
+  color: #777;
+  font-size: 0.8rem;
 }
 
-/* Animaciones */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
-}
+@keyframes float { 0% {transform: translateY(0);} 50% {transform: translateY(-10px);} 100% {transform: translateY(0);} }
