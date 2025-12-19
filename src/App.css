@@ -1,14 +1,12 @@
-/* Importamos fuentes elegantes */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
 
 :root {
-  --color-primary: #6B8E23; /* Un verde olivo elegante o el azul del PDF, ajusta a gusto */
+  --color-primary: #5e7385; /* Azul grisáceo elegante (basado en el PDF) */
   --color-text: #444;
-  --color-gold: #D4AF37;
-  --bg-color: #f4f4f4;
+  --color-gold: #c5a059; /* Dorado mate */
+  --bg-color: #f0f2f5;
 }
 
-/* Reset y base */
 body {
   margin: 0;
   padding: 0;
@@ -17,7 +15,7 @@ body {
   overflow-x: hidden;
 }
 
-/* --- ESTILOS DEL SOBRE (PANTALLA DE INICIO) --- */
+/* --- SOBRE (Igual que antes pero optimizado) --- */
 .envelope-container {
   height: 100vh;
   width: 100%;
@@ -25,12 +23,12 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
-  position: fixed; /* Fijo para cubrir todo */
+  background: linear-gradient(135deg, #eef2f3 0%, #8e9eab 100%); /* Gradiente metálico suave */
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 100;
-  transition: opacity 1s ease, visibility 1s;
+  transition: opacity 1.2s ease, visibility 1.2s;
 }
 
 .envelope-container.hidden {
@@ -39,51 +37,48 @@ body {
   pointer-events: none;
 }
 
-/* El sobre en sí */
 .envelope-wrapper {
   position: relative;
   cursor: pointer;
   animation: float 3s ease-in-out infinite;
-  transform-origin: center;
 }
 
 .envelope {
-  width: 300px;
-  height: 200px;
+  width: 320px;
+  height: 220px;
   background-color: #fff;
-  position: relative;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-  border-radius: 5px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  border-radius: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
-/* Solapa del sobre */
+/* Solapa */
 .envelope::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  border-left: 150px solid transparent;
-  border-right: 150px solid transparent;
-  border-top: 110px solid #f2f2f2;
-  transition: transform 0.6s;
+  border-left: 160px solid transparent;
+  border-right: 160px solid transparent;
+  border-top: 120px solid #f8f8f8; /* Color solapa */
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   transform-origin: top;
   z-index: 5;
 }
 
-/* Efecto al abrir (Hover o clase open) */
 .envelope-container.open .envelope::before {
   transform: rotateX(180deg);
   z-index: 0;
 }
 
-/* Sello de lacre */
+/* Sello */
 .wax-seal {
-  width: 50px;
-  height: 50px;
-  background: radial-gradient(circle at 30% 30%, #ffd700, #b8860b);
+  width: 55px;
+  height: 55px;
+  background: radial-gradient(circle at 30% 30%, #d4af37, #b8860b);
   border-radius: 50%;
   position: absolute;
   top: 50%;
@@ -95,33 +90,42 @@ body {
   justify-content: center;
   color: white;
   font-family: 'Great Vibes', cursive;
-  font-size: 1.5rem;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  font-size: 1.6rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
   border: 2px solid #daa520;
 }
 
 .click-hint {
-  margin-top: 60px;
-  color: #666;
-  font-size: 0.9rem;
-  letter-spacing: 3px;
+  margin-top: 80px;
+  color: #fff;
+  font-size: 0.8rem;
+  letter-spacing: 4px;
   text-transform: uppercase;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
   animation: pulse 2s infinite;
 }
 
-/* --- CONTENIDO DE LA INVITACIÓN --- */
+/* --- TARJETA DE INVITACIÓN (El cambio "Pro") --- */
 .invitation-card {
-  max-width: 500px; /* Ancho máximo de tarjeta física */
+  max-width: 800px; /* MUCHO MÁS ANCHO EN PC */
   margin: 40px auto;
   background-color: #fff;
-  background-image: url("https://www.transparenttextures.com/patterns/cream-paper.png"); /* Textura papel */
-  padding: 40px 30px;
-  text-align: center;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-  border-radius: 8px;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.1);
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1s ease 0.5s, transform 1s ease 0.5s; /* Delay para que abra el sobre primero */
+  transform: translateY(50px);
+  transition: opacity 1s ease 0.5s, transform 1s ease 0.5s;
+  position: relative;
+  overflow: hidden; /* Para contener bordes */
+}
+
+/* Borde Decorativo Interno */
+.ornamental-border {
+  border: 1px solid var(--color-gold);
+  margin: 15px; /* Margen para el borde doble */
+  padding: 40px 20px;
+  outline: 1px solid var(--color-gold); /* Doble línea */
+  outline-offset: -8px;
+  text-align: center;
 }
 
 .invitation-card.visible {
@@ -129,111 +133,148 @@ body {
   transform: translateY(0);
 }
 
-/* Tipografía y Elementos */
+/* Tipografía */
 h1 {
   font-family: 'Great Vibes', cursive;
-  font-size: 3.8rem;
+  font-size: 4.5rem; /* Título gigante */
   color: var(--color-primary);
-  margin: 10px 0;
-  line-height: 1.2;
+  margin: 10px 0 20px 0;
+  line-height: 1.1;
 }
 
 h2 {
   font-family: 'Cinzel', serif;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   color: var(--color-text);
-  margin-top: 30px;
   margin-bottom: 15px;
-  border-bottom: 1px solid #ddd;
-  display: inline-block;
-  padding-bottom: 5px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .intro {
-  font-size: 0.9rem;
-  color: #777;
-  margin-bottom: 0;
+  font-size: 0.85rem;
+  color: #888;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
 }
 
 .date-block {
-  border-top: 1px solid var(--color-gold);
-  border-bottom: 1px solid var(--color-gold);
-  padding: 15px 0;
   margin: 30px 0;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
 }
 
 .big-date {
-  font-size: 1.8rem;
-  font-weight: 700;
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
   color: #333;
-  letter-spacing: 2px;
+  display: block;
 }
 
-.place {
-  font-style: italic;
+.city {
+  font-size: 0.9rem;
+  color: #888;
+  letter-spacing: 3px;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+/* GRID SYSTEM PARA EVENTOS */
+.events-row {
+  display: flex;
+  flex-direction: column; /* Mobile first: columna */
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.event-col {
+  flex: 1;
+  padding: 0 10px;
+}
+
+/* Detalles */
+.details-text {
+  font-size: 0.95rem;
   color: #666;
-  margin-bottom: 20px;
+  line-height: 1.6;
+  margin-bottom: 5px;
 }
 
 /* Botones */
 .btn {
   display: inline-block;
-  background-color: var(--color-primary);
-  color: white;
-  padding: 12px 25px;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  padding: 10px 25px;
   text-decoration: none;
-  border-radius: 30px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
   letter-spacing: 1px;
-  transition: transform 0.2s, background 0.2s;
-  margin-top: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  margin-top: 15px;
+  transition: all 0.3s;
 }
 
 .btn:hover {
-  background-color: #55701b;
-  transform: translateY(-2px);
+  background-color: var(--color-primary);
+  color: white;
 }
 
-.btn.whatsapp {
-  background-color: #25D366;
+.btn-main {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1rem;
+  border-radius: 4px;
+  margin-top: 30px;
+  cursor: pointer;
 }
-.btn.whatsapp:hover {
-  background-color: #1ebc57;
+
+.btn-main:hover {
+  background-color: #4a5d6b;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* --- MEDIA QUERIES (DESKTOP) --- */
+@media (min-width: 768px) {
+  .invitation-card {
+    margin: 60px auto;
+  }
+  
+  .ornamental-border {
+    padding: 60px 40px;
+    margin: 20px;
+  }
+
+  /* Aquí está la magia: pone los eventos lado a lado */
+  .events-row {
+    flex-direction: row; /* Fila */
+    justify-content: center;
+  }
+  
+  .event-col {
+    border-right: 1px solid #eee; /* Línea divisoria */
+  }
+  
+  .event-col:last-child {
+    border-right: none;
+  }
+
+  h1 {
+    font-size: 5.5rem;
+  }
 }
 
 /* Animaciones */
 @keyframes float {
-  0% { transform: translateY(0px); }
+  0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
 }
 
 @keyframes pulse {
   0%, 100% { opacity: 0.6; }
   50% { opacity: 1; }
-}
-
-/* --- MEDIA QUERIES (RESPONSIVE) --- */
-
-/* Para PC / Escritorio */
-@media (min-width: 768px) {
-  body {
-    /* Fondo oscuro/elegante para el cuerpo en PC para resaltar la tarjeta blanca */
-    background-color: #e6e6e6; 
-  }
-  
-  .invitation-card {
-    margin: 60px auto;
-    padding: 60px;
-    border: 1px solid #ddd;
-  }
-
-  /* Hacemos el sobre más grande en PC para que no se vea ridículo */
-  .envelope-wrapper {
-    transform: scale(1.5); 
-  }
 }
