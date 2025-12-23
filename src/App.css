@@ -116,14 +116,33 @@ body {
 /* --- 2. SECCIÓN TIKTOK (EL SOBRE INTERNO - CORREGIDO MÓVIL) --- */
 .tiktok-container {
   width: 100%;
-  min-height: 100dvh; /* dvh ayuda a que se vea bien en navegadores móviles */
+  min-height: 100dvh;
+  /* Color de respaldo por si la imagen falla */
   background-color: #f0f8ff; 
+  
+  /* Flexbox para centrar todo */
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 40px 20px;
   position: relative;
-  overflow: hidden; /* Evita scroll innecesario si algo sobresale */
+  overflow: hidden;
+  
+  /* Esto ayuda a que el scroll sea suave si la imagen es fija */
+  background-attachment: fixed; 
+}
+
+/* Opcional: Si la imagen de fondo es muy fuerte y quieres oscurecerla un poco 
+   para que resalte el sobre, puedes agregar este pseudo-elemento: */
+.tiktok-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2); /* Capa negra al 20% */
+  z-index: 0; /* Detrás del sobre */
 }
 
 .tiktok-envelope-bg {

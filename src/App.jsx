@@ -3,8 +3,11 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import './App.css';
 
-// Asegúrate de que esta ruta sea correcta según tu proyecto
+// --- TUS IMÁGENES ---
 import FOTO_3 from './assets/fotogyj1.png';
+
+// 👇👇👇 CAMBIA ESTO POR EL NOMBRE DE TU ARCHIVO DE FONDO 👇👇👇
+import FONDO_TIKTOK from './assets/primera.jpeg'; // <- Pon aquí tu imagen de fondo real
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);        
@@ -18,14 +21,13 @@ function App() {
     });
   }, []);
 
-  // Lógica original elegante: Abre la solapa -> Espera -> Fade Out
+  // Animación de apertura: Gira solapa -> Fade Out
   const handleOpen = () => {
-    setIsOpen(true); // Esto activa la clase .open (gira la solapa)
+    setIsOpen(true);
     
     setTimeout(() => {
-      setShowContent(true); // Muestra el contenido detrás (aún invisible por el overlay)
+      setShowContent(true);
       
-      // Añade fade-out al overlay para que desaparezca suavemente
       const overlay = document.querySelector('.envelope-overlay');
       if (overlay) overlay.classList.add('fade-out');
 
@@ -49,20 +51,30 @@ function App() {
       {showContent && (
         <div className="main-container">
           
-          {/* --- NUEVA SECCIÓN TIKTOK (Sobre Vino con Carta) --- */}
-          <div className="tiktok-container">
+          {/* --- SECCIÓN TIKTOK (Sobre Azul con Fondo de Imagen) --- */}
+          <div 
+            className="tiktok-container"
+            // Aquí se aplica la imagen que importaste arriba
+            style={{ 
+              backgroundImage: `url(${FONDO_TIKTOK})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              backgroundAttachment: 'fixed' // Opcional: efecto parallax sencillo
+            }}
+          >
             
             <div className="tiktok-envelope-bg">
-              {/* Cuerpo del sobre (Fondo Vino) */}
+              {/* Cuerpo del sobre (Azul Profundo) */}
               <div className="tiktok-envelope-body"></div>
               
-              {/* Solapa Triangular (Arriba) */}
+              {/* Solapa Triangular (Azul Profundo) */}
               <div className="tiktok-flap"></div>
               
               {/* Sello de Lacre */}
               <div className="tiktok-seal">JG</div>
 
-              {/* La Carta Blanca (Asomando por debajo de la solapa) */}
+              {/* La Carta Blanca */}
               <div className="tiktok-card" data-aos="fade-up" data-aos-duration="1500">
                 <p className="tiktok-text">
                   NOS LLENA DE ALEGRÍA PODER COMPARTIR CONTIGO ESTE CAPÍTULO TAN IMPORTANTE DE NUESTRAS VIDAS.
@@ -88,7 +100,7 @@ function App() {
             <div className="hero-overlay"></div>
             <div className="hero-content" data-aos="zoom-in">
               <p className="intro-text">Con la bendición de nuestros padres</p>
-              <h1 className='nontranslate' translate='no'>John y Germania</h1>
+              <h1 className='nontranslate' translate='no'>John & Germania</h1>
               <p style={{fontStyle: 'italic', marginTop: '10px'}}>¡Nos Casamos!</p>
               <div className="hero-date">
                 SÁBADO 11 ABRIL 2026
