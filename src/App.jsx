@@ -3,40 +3,43 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import './App.css';
 
+// Asegúrate de que esta ruta sea correcta según tu proyecto
 import FOTO_3 from './assets/fotogyj1.png';
-// IMAGEN PLACEHOLDER (Reemplazar cuando tengas las fotos)
-const FOTO_1 = "https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
-const FOTO_2 = "https://images.unsplash.com/photo-1511285560982-1351cdeb9821?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80";
-
-
 
 function App() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);        
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
     AOS.init({
       duration: 1000,
       once: true,
-      offset: 50, // Offset bajo para que anime rápido en pantallas pequeñas
+      offset: 50, 
     });
   }, []);
 
+  // Lógica original elegante: Abre la solapa -> Espera -> Fade Out
   const handleOpen = () => {
-    setIsOpen(true);
+    setIsOpen(true); // Esto activa la clase .open (gira la solapa)
+    
     setTimeout(() => {
-      setShowContent(true);
-      setTimeout(() => AOS.refresh(), 100);
+      setShowContent(true); // Muestra el contenido detrás (aún invisible por el overlay)
+      
+      // Añade fade-out al overlay para que desaparezca suavemente
+      const overlay = document.querySelector('.envelope-overlay');
+      if (overlay) overlay.classList.add('fade-out');
+
+      setTimeout(() => AOS.refresh(), 500);
     }, 800);
   };
 
   return (
     <>
-      {/* --- SOBRE (Overlay) --- */}
-      <div className={`envelope-overlay ${isOpen ? 'open fade-out' : ''}`}>
+      {/* --- SOBRE INICIAL (Overlay) --- */}
+      <div className={`envelope-overlay ${isOpen ? 'open' : ''}`}>
         <div className="envelope-wrapper" onClick={handleOpen}>
           <div className="envelope">
-            <div className="wax-seal" translate='no'>J&G</div>
+            <div className="wax-seal" translate='no'>JG</div>
           </div>
         </div>
         <div className="click-hint">TOCA PARA ABRIR</div>
@@ -46,12 +49,46 @@ function App() {
       {showContent && (
         <div className="main-container">
           
+          {/* --- NUEVA SECCIÓN TIKTOK (Sobre Vino con Carta) --- */}
+          <div className="tiktok-container">
+            
+            <div className="tiktok-envelope-bg">
+              {/* Cuerpo del sobre (Fondo Vino) */}
+              <div className="tiktok-envelope-body"></div>
+              
+              {/* Solapa Triangular (Arriba) */}
+              <div className="tiktok-flap"></div>
+              
+              {/* Sello de Lacre */}
+              <div className="tiktok-seal">JG</div>
+
+              {/* La Carta Blanca (Asomando por debajo de la solapa) */}
+              <div className="tiktok-card" data-aos="fade-up" data-aos-duration="1500">
+                <p className="tiktok-text">
+                  NOS LLENA DE ALEGRÍA PODER COMPARTIR CONTIGO ESTE CAPÍTULO TAN IMPORTANTE DE NUESTRAS VIDAS.
+                </p>
+                <br/>
+                <p className="tiktok-text">
+                  HEMOS PREPARADO CON MUCHO AMOR ESTA CELEBRACIÓN, ESPERANDO QUE FORMES PARTE DE NUESTRA HISTORIA.
+                </p>
+                <br/>
+                <p className="tiktok-text" style={{fontSize: '0.7rem', color: '#888'}}>
+                  CON TODO NUESTRO CARIÑO,
+                </p>
+                
+                <h2 className="tiktok-names nontranslate" translate='no'>John y Germania</h2>
+              </div>
+            </div>
+
+          </div>
+
+
           {/* 1. PORTADA */}
           <header className="hero-section">
             <div className="hero-overlay"></div>
             <div className="hero-content" data-aos="zoom-in">
               <p className="intro-text">Con la bendición de nuestros padres</p>
-              <h1 className='nontranslate' translate='no'>John & Germania</h1>
+              <h1 className='nontranslate' translate='no'>John y Germania</h1>
               <p style={{fontStyle: 'italic', marginTop: '10px'}}>¡Nos Casamos!</p>
               <div className="hero-date">
                 SÁBADO 11 ABRIL 2026
@@ -83,7 +120,7 @@ function App() {
                 <div className="event-time">17:00 H</div>
                 <p>Parroquia / Capilla</p>
                 <p style={{fontSize: '0.9rem', color: '#777'}}>Vía Monay Baguanchi Paccha km 4 1/2</p>
-                <a href="https://maps.app.goo.gl/UGcvP1QRpdSGd3Mp8" target="_blank" className="btn-map">
+                <a href="https://maps.app.goo.gl/UGcvP1QRpdSGd3Mp8" target="_blank" className="btn-map" rel="noreferrer">
                   Ver Mapa
                 </a>
               </div>
@@ -95,7 +132,7 @@ function App() {
                 <div className="event-time">19:00 H</div>
                 <p>Centro de Convenciones Baguanchi</p>
                 <p style={{fontSize: '0.9rem', color: '#777'}}>Vía Monay Baguanchi Paccha km 4 1/2</p>
-                <a href="https://maps.app.goo.gl/UGcvP1QRpdSGd3Mp8" target="_blank" className="btn-map">
+                <a href="https://maps.app.goo.gl/UGcvP1QRpdSGd3Mp8" target="_blank" className="btn-map" rel="noreferrer">
                   Ver Mapa
                 </a>
               </div>
@@ -122,6 +159,7 @@ function App() {
                 href="https://wa.me/593994050290?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20boda%20de%20John%20y%20Germania"
                 className="btn-whatsapp"
                 target="_blank"
+                rel="noreferrer"
               >
                 CONFIRMAR POR WHATSAPP
               </a>

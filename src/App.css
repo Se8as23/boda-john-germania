@@ -1,14 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
 
 :root {
-  --color-primary: #5e7385; /* Azul acero (según invitación) */
-  --color-gold: #c5a059;
+  /* NUEVA PALETA DE COLORES */
+  /* Azul Profundo (Extraído de tu rgba(0, 38, 150)) */
+  --color-primary: #002696; 
+  /* Azul Cielo (El color de fondo de tu sello) */
+  --color-accent: #8fe3ff; 
+  /* Mantenemos el dorado para detalles pequeños si gustan */
+  --color-gold: #c5a059; 
   --bg-light: #f8f9fa;
   --text-dark: #333;
 }
 
 * {
-  box-sizing: border-box; /* Vital para que los paddings no rompan el ancho */
+  box-sizing: border-box;
 }
 
 body {
@@ -17,18 +22,19 @@ body {
   font-family: 'Montserrat', sans-serif;
   background-color: #fff;
   color: var(--text-dark);
-  overflow-x: hidden; /* Evita scroll horizontal accidental */
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-/* --- PANTALLA DE CARGA (EL SOBRE) --- */
+/* --- 1. PANTALLA DE CARGA (SOBRE ORIGINAL) --- */
 .envelope-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100dvh; /* Usamos dvh para móviles */
-  background: linear-gradient(135deg, #eef2f3 0%, #8e9eab 100%);
+  height: 100dvh;
+  /* Gradiente ajustado a tonos azules suaves */
+  background: linear-gradient(135deg, #e0f7fa 0%, #bbdefb 100%);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,13 +51,12 @@ body {
 
 .envelope-wrapper {
   position: relative;
-  /* Animación suave flotando */
   animation: float 3s ease-in-out infinite; 
   cursor: pointer;
 }
 
 .envelope {
-  width: 280px; /* Un poco más pequeño para móviles estrechos */
+  width: 280px;
   height: 180px;
   background: #fff;
   display: flex;
@@ -62,6 +67,7 @@ body {
   position: relative;
 }
 
+/* Solapa del sobre de carga */
 .envelope::before {
   content: '';
   position: absolute;
@@ -80,15 +86,16 @@ body {
   z-index: 0;
 }
 
+/* TU CÓDIGO DE SELLO ACTUALIZADO */
 .wax-seal {
   width: 50px;
   height: 50px;
-  background: radial-gradient(circle at 30% 30%, #ffd700, #b8860b);
+  background: radial-gradient(circle at 30% 30%, #8fe3ff, #8fe3ff); /* Tu azul cielo */
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: rgba(0, 38, 150, 0.642); /* Tu azul oscuro */
   font-family: 'Great Vibes', cursive;
   font-size: 1.4rem;
   z-index: 10;
@@ -98,22 +105,132 @@ body {
 
 .click-hint {
   margin-top: 60px;
-  color: white;
+  color: #002696; /* Texto azul oscuro para que se lea en el fondo claro */
   font-size: 0.8rem;
   letter-spacing: 2px;
   text-transform: uppercase;
   animation: pulse 2s infinite;
+  font-weight: bold;
 }
 
-/* --- SITIO PRINCIPAL (MOBILE FIRST) --- */
+/* --- 2. SECCIÓN TIKTOK (EL SOBRE INTERNO - CORREGIDO MÓVIL) --- */
+.tiktok-container {
+  width: 100%;
+  min-height: 100dvh; /* dvh ayuda a que se vea bien en navegadores móviles */
+  background-color: #f0f8ff; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  position: relative;
+  overflow: hidden; /* Evita scroll innecesario si algo sobresale */
+}
+
+.tiktok-envelope-bg {
+  position: relative;
+  width: 100%;
+  max-width: 400px; /* Tamaño máximo en PC */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Importante: Esto asegura que el contenido no rompa el ancho en móviles */
+  box-sizing: border-box; 
+}
+
+/* La Solapa (Triángulo) - AHORA RESPONSIVA */
+.tiktok-flap {
+  width: 100%; /* Ocupa exactamente el ancho del sobre, sea cual sea */
+  height: 140px; /* Altura de la punta */
+  background-color: #bbdefb; 
+
+  
+  /* Esta es la magia: Dibuja un triángulo basado en porcentajes */
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10; 
+  pointer-events: none; 
+  /* Drop-shadow funciona mejor con clip-path que box-shadow */
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+}
+
+/* Cuerpo del Sobre - Color Azul Profundo */
+.tiktok-envelope-body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Se adapta al padre */
+  height: 5%; /* Cubre todo el fondo necesario */
+  min-height: 300px; /* Altura mínima visual */
+  background-color: #bbdefb; 
+  z-index: 0;
+  border-radius: 0 0 4px 4px; /* Redondeado solo abajo */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+/* Sello Interno */
+.tiktok-seal {
+  width: 60px; /* Un poco más pequeño para móviles */
+  height: 60px;
+  background: radial-gradient(circle at 30% 30%, #8fe3ff, #8fe3ff);
+  border-radius: 50%;
+  position: absolute;
+  top: 100px; /* Ajustado para quedar en la punta de la solapa */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 11;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(0, 38, 150, 0.8);
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* La Carta */
+.tiktok-card {
+  background-color: #fff;
+  width: 90%; 
+  /* Ajustamos márgenes para que se vea bien en móvil */
+  margin-top: 70px; 
+  margin-bottom: 20px; /* Espacio abajo */
+  padding: 60px 20px 40px 20px; /* Padding lateral reducido para móviles */
+  text-align: center;
+  position: relative;
+  z-index: 5; 
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  border-radius: 2px;
+}
+
+.tiktok-text {
+  font-family: 'Cinzel', serif;
+  color: #555;
+  font-size: 0.8rem; /* Letra un pelín más pequeña para que quepa bien */
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+}
+
+.tiktok-names {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  color: var(--color-primary); 
+  margin-top: 20px;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+/* --- SITIO PRINCIPAL --- */
 .main-container {
   width: 100%;
   overflow-x: hidden;
 }
 
-/* Hero Section (Portada) */
+/* Hero Section */
 .hero-section {
-  height: 100dvh; /* Pantalla completa exacta en móvil */
+  height: 100dvh; 
   width: 100%;
   background-image: url('https://images.unsplash.com/photo-1511285560982-1351cdeb9821?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
   background-size: cover;
@@ -127,7 +244,7 @@ body {
 .hero-overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.4); /* Oscurecer foto para leer texto */
+  background: rgba(0,20,60,0.3); /* Un tinte azulado muy sutil en la foto */
 }
 
 .hero-content {
@@ -151,7 +268,7 @@ body {
 
 h1 {
   font-family: 'Great Vibes', cursive;
-  font-size: 4rem; /* Grande pero ajustado */
+  font-size: 4rem; 
   margin: 0;
   line-height: 1.1;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
@@ -167,20 +284,20 @@ h1 {
 
 /* Secciones Generales */
 section {
-  padding: 50px 20px; /* Padding cómodo para móvil */
+  padding: 50px 20px;
   text-align: center;
 }
 
 .section-title {
   font-family: 'Cinzel', serif;
   font-size: 1.8rem;
-  color: var(--color-primary);
+  color: var(--color-primary); /* Azul Oscuro */
   margin-bottom: 30px;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
-/* Historia (Fotos) */
+/* Historia */
 .story-block {
   margin-bottom: 50px;
 }
@@ -196,7 +313,7 @@ section {
 .story-text h3 {
   font-family: 'Great Vibes', cursive;
   font-size: 2rem;
-  color: var(--color-gold);
+  color: var(--color-primary); /* Ahora los títulos también en Azul */
   margin: 10px 0;
 }
 
@@ -206,14 +323,14 @@ section {
   font-size: 0.95rem;
 }
 
-/* Tarjetas de Eventos (Iglesia/Fiesta) */
+/* Tarjetas de Eventos */
 .event-card {
   background: white;
   padding: 30px 20px;
-  margin-bottom: 30px; /* Separación entre tarjetas */
+  margin-bottom: 30px; 
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-  border-top: 4px solid var(--color-gold);
+  border-top: 4px solid var(--color-primary); /* Borde superior Azul */
 }
 
 .event-icon {
@@ -241,14 +358,14 @@ section {
   transition: background 0.3s;
 }
 
-.btn-map:active {
+.btn-map:active, .btn-map:hover {
   background: var(--color-primary);
   color: white;
 }
 
 /* Footer Confirmación */
 .rsvp-footer {
-  background: var(--color-primary);
+  background: var(--color-primary); /* Fondo footer Azul */
   color: white;
   padding: 60px 20px;
 }
@@ -261,11 +378,11 @@ section {
 }
 
 .btn-whatsapp {
-  display: block; /* Botón ancho completo */
+  display: block; 
   width: 100%;
   max-width: 300px;
   margin: 0 auto;
-  background-color: #25D366; /* Verde WhatsApp */
+  background-color: #25D366; 
   color: white;
   padding: 15px 0;
   text-align: center;
@@ -282,7 +399,6 @@ section {
 @keyframes pulse { 0% {opacity: 0.5;} 50% {opacity: 1;} 100% {opacity: 0.5;} }
 @keyframes pulse-btn { 0% {transform: scale(1);} 50% {transform: scale(1.05);} 100% {transform: scale(1);} }
 
-/* Ajustes mínimos para PC (para que no se rompa si alguien abre ahí) */
 @media (min-width: 768px) {
   .hero-content { padding: 60px; max-width: 600px; }
   .story-block { display: flex; align-items: center; gap: 40px; text-align: left; }
@@ -291,4 +407,5 @@ section {
   .story-text { width: 50%; }
   .events-container { display: flex; gap: 20px; justify-content: center; }
   .event-card { width: 300px; }
+  .tiktok-container { padding-top: 80px; }
 }
