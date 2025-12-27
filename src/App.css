@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Allura&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Cinzel:wght@400;700&display=swap');
 
 :root {
   /* NUEVA PALETA DE COLORES */
@@ -233,12 +234,14 @@ body {
 }
 
 .tiktok-names {
-  font-family: 'Cinzel', serif;
-  font-size: 1.4rem;
+  font-size: 2.3rem;
   color: var(--color-primary); 
-  margin-top: 20px;
+  margin-top: 22px;
   letter-spacing: 2px;
   font-weight: bold;
+  font-family: 'Great Vibes', cursive;
+  
+  
 }
 
 /* --- SITIO PRINCIPAL --- */
@@ -258,6 +261,11 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
+}
+
+.hero-text {
+  color: blue;
+  background-color: #25D366;
 }
 
 .hero-overlay {
@@ -427,4 +435,508 @@ section {
   .events-container { display: flex; gap: 20px; justify-content: center; }
   .event-card { width: 300px; }
   .tiktok-container { padding-top: 80px; }
+}
+
+/* --- ESTILOS DE LA IMAGEN DE TRANSICIÓN (HEADER 1) --- */
+.hero-image-transition {
+  width: 100%;
+  height: 100vh; /* 100vh para que ocupe toda la pantalla, o pon 70vh si la quieres más corta */
+  background-position: center;
+  background-size: cover; /* Asegura que la foto cubra todo sin deformarse */
+  background-repeat: no-repeat;
+  position: relative;
+  display: block;
+  /* Quitamos 'background-attachment: fixed' para que sea estática y scroll normal */
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.2);
+}
+
+/* --- NUEVA SECCIÓN INVITACIÓN (REFERENCIA AZUL CLARO) --- */
+.watercolor-invite {
+  position: relative;
+  padding: 80px 20px;
+  
+  /* 1. Color de fondo base (Azul acuarela suave exacto) */
+  background-color: #8eccf3; 
+  
+  /* 2. La textura de papel de arroz correcta */
+  background-image: url("https://www.transparenttextures.com/patterns/fresh-snow.png");
+  
+  /* 3. Propiedades de diseño */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  text-align: center;
+  
+  /* Sombra interna sutil para profundidad */
+  box-shadow: inset 0 0 60px rgba(255,255,255,0.5);
+}
+
+/* El Marco con borde */
+.wc-frame {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 600px;
+  /* Borde azul elegante según tu imagen */
+  border: 1px solid #8faad4; 
+  padding: 60px 30px;
+  background-color: rgba(255, 255, 255, 0.6); /* Fondo semitransparente */
+  box-shadow: 0 10px 30px rgba(84, 114, 174, 0.1);
+}
+
+/* Textos */
+.wc-intro {
+  font-family: 'Montserrat', sans-serif;
+  color: #5472ae; /* Azul grisáceo de la foto */
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.wc-label {
+  font-family: 'Cinzel', serif;
+  color: #3b5c8d;
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+  margin: 30px 0 10px 0;
+  font-weight: normal;
+}
+
+.wc-names {
+  font-family: 'Great Vibes', cursive;
+  font-size: 4.5rem; /* Nombres grandes */
+  color: #5472ae;
+  margin: 10px 0 30px 0;
+  line-height: 1.1;
+  font-weight: normal;
+}
+
+.wc-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2.2rem;
+  color: #2c4c7c; /* Un azul un poco más oscuro para el título */
+  margin: 20px 0;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+/* FLORES EN LAS ESQUINAS */
+.wc-flower {
+  position: absolute;
+  width: 290px; /* Tamaño de la flor */
+  opacity: 1.8;
+  pointer-events: none; /* Para que no moleste al click */
+  z-index: 5; /* Encima del marco para crear el efecto de profundidad */
+  /* Sombra suave para dar más realismo */
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+  /* Quiero rotar la imagen 180 grados */
+  
+}
+
+/* Flor Arriba Derecha */
+.wc-flower.top-right {
+  top: 38px;
+  right: 20px;
+  /* Ajusta la rotación según tu imagen */
+  transform: rotate(-90deg); 
+}
+
+/* Flor Abajo Izquierda */
+.wc-flower.bottom-left {
+  bottom: 38px;
+  left: 30px;
+  transform: rotate(90deg); /* Girada para la esquina opuesta */
+}
+
+/* --- ESTILOS PARA LOS NOMBRES DE LOS PADRES --- */
+.parents-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px; /* Separación entre las columnas */
+  width: 100%;
+  margin: 15px 0 25px 0;
+  flex-wrap: wrap; /* Para que baje en móviles si no cabe */
+}
+
+.parents-column {
+  flex: 1;
+  min-width: 240px; /* Ancho mínimo para que no se aprieten */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.parents-column p {
+  font-family: 'Montserrat', sans-serif;
+  color: #5472ae; /* El mismo azul del tema */
+  font-size: 0.75rem; /* Letra fina y elegante */
+  line-height: 1.4;
+  margin: 2px 0;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Ajuste para móviles: que las columnas se apilen */
+@media (max-width: 600px) {
+  .parents-container {
+    gap: 20px;
+    flex-direction: column; 
+    align-items: center;
+  }
+  .parents-column {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+/* Responsive para móvil */
+@media (max-width: 768px) {
+  .wc-names { font-size: 3.5rem; }
+  .wc-title { font-size: 1.8rem; }
+  .wc-flower { width: 120px; } /* Flores más pequeñas en móvil */
+  .hero-image-transition { height: 100vh; }
+}
+
+/* --- NUEVA SECCIÓN: TARJETA DE UBICACIÓN (AZUL) --- */
+/* Usamos un fondo suave para la sección completa */
+.location-section {
+  padding: 40px 20px; /* Aumenté un poco el padding para que respire mejor, puedes dejarlo en 10px si prefieres */
+  
+  /* 1. El mismo color azul pálido elegante que la otra sección */
+  background-color: #8eccf3; 
+  
+  /* 2. La misma textura de papel de arroz */
+  background-image: url("https://www.transparenttextures.com/patterns/fresh-snow.png");
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Asegura que el contenido se apile bien */
+}
+/* La Tarjeta Azul */
+/* Modificación: Tarjeta semitransparente para ver el fondo */
+.blue-location-card {
+  /* CAMBIO CLAVE: Usamos rgba para transparencia. 
+     Los primeros 3 números son el color azul (#a3c2e0) y el 0.75 es la opacidad */
+  background-color: rgba(151, 209, 232, 0.75); 
+  
+  /* Efecto de cristal esmerilado (backdrop-filter) para que sea vea borroso lo de atrás */
+  backdrop-filter: blur(3px); 
+  -webkit-backdrop-filter: blur(3px); /* Soporte para Safari */
+  
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+  padding: 40px 20px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 10px 25px rgba(163, 194, 224, 0.3);
+  position: relative;
+  /* Ya no necesitamos el overflow hidden estricto si queremos ver bordes suaves */
+}
+
+/* IMPORTANTE: Elimina o comenta la sección .blue-location-card::before 
+   que tenía el emoji '🌿', porque ahora ya tienes el ramo real de fondo */
+/* .blue-location-card::before {
+   ... elimínalo ...
+} 
+*/
+
+/* --- TIPOGRAFÍA DE LA TARJETA --- */
+
+.loc-cursive-top {
+  /* La alternativa a Shelley Allegro */
+  font-family: 'Pinyon Script', cursive;
+  
+  /* Tamaño grande para lucir los detalles */
+  font-size: 3.5rem; 
+  
+  margin: 0 0 15px 0;
+  font-weight: 400; /* No necesita negrita, es fina por naturaleza */
+  
+  /* Color azul acero */
+  color: #ffffff; 
+  
+  /* Fundamental para respetar tu mayúscula "A" */
+  text-transform: none !important; 
+  
+  letter-spacing: 1px; /* Un poquito de aire entre letras queda muy "premium" */
+}
+
+.loc-month {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+/* Estructura de la Fecha (Sábado --- 11 --- 2026) */
+.loc-date-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.loc-date-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loc-line {
+  width: 60px;
+  height: 1px;
+  background-color: white;
+  margin: 5px 0;
+  opacity: 0.7;
+}
+
+.loc-big-num {
+  font-size: 4.5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300; /* Fino */
+  line-height: 1;
+}
+
+.loc-year-text {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Hora y Título */
+.loc-time {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.loc-event-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Icono Iglesia */
+.loc-icon-church {
+  font-size: 3rem;
+  margin: 10px 0;
+  display: block;
+}
+
+/* Lugar */
+.loc-venue-name {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.2rem;
+  margin: 10px 0;
+  line-height: 1.2;
+}
+
+.loc-address {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  opacity: 0.9;
+  margin-bottom: 30px;
+}
+
+/* Botón Blanco */
+.btn-location-white {
+  display: inline-block;
+  background-color: white;
+  color: #5472ae; /* Letras azules para contraste */
+  padding: 12px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-location-white:hover {
+  transform: scale(1.05);
+}
+
+
+
+/* --- TARJETA BLANCA DE RECEPCIÓN --- */
+.white-card-reception {
+  background-color: rgb(215, 232, 239);
+  border-radius: 30px; /* Bordes muy redondeados como en la foto */
+  padding: 40px 30px;
+  max-width: 550px; /* Ancho controlado */
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.05); /* Sombra muy suave */
+  margin: -40px auto;
+}
+
+/* Texto superior ("Y posteriormente...") */
+.reception-intro {
+  font-family: 'Montserrat', sans-serif; /* O la fuente 'handwritten' si tienes una */
+  color: #3c5060; /* Azul oscuro grisáceo */
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* Nombre del lugar en Cursiva */
+.reception-venue {
+  font-family: 'Pinyon Script', cursive; /* O 'Allura' si la preferiste */
+  font-size: 2.8rem;
+  color: #5e7385;
+  margin: 15px 0;
+  line-height: 1.1;
+  text-transform: none !important; /* Respetar mayúsculas/minúsculas */
+}
+
+/* Dirección y Hora */
+.reception-details {
+  font-family: 'Montserrat', sans-serif;
+  color: #3c5060;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 5px 0;
+}
+
+/* El botón azul claro ovalado */
+.btn-reception {
+  display: inline-block;
+  background-color: #e3f2fd; /* Azul muy clarito */
+  color: #455a64;
+  padding: 12px 35px;
+  border-radius: 50px; /* Forma de píldora */
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 25px;
+  transition: transform 0.2s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.btn-reception:hover {
+  transform: scale(1.05);
+  background-color: #bbdefb;
+}
+
+/* Imagen del carro */
+.car-illustration {
+  width: 180px; /* Ajusta según tu imagen */
+  margin: 10px auto;
+  display: block;
+}
+/* --- SECCIÓN VESTIMENTA --- */
+.dresscode-section {
+  position: relative;
+  padding: 100px 20px;
+  /* El mismo fondo base para mantener consistencia */
+  background-color: #d4e6f1;
+  background-image: url("https://www.transparenttextures.com/patterns/rice-paper-2.png");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* El marco lineal fino decorativo */
+.thin-frame {
+  position: absolute;
+  top: 50px; bottom: 50px; left: 30px; right: 30px;
+  border: 1px solid #5e7385; /* Línea azul acero fina */
+  z-index: 1; /* Detrás de la tarjeta, delante del fondo */
+  pointer-events: none;
+}
+
+/* La tarjeta central "burbuja azul" */
+.dresscode-card {
+  /* Color azul un poco más oscuro que el fondo y semitransparente */
+  background-color: rgba(174, 214, 241, 0.6); 
+  backdrop-filter: blur(3px); /* Efecto vidrio suave */
+  border-radius: 80px 80px 40px 40px; /* Forma de arco suave */
+  padding: 50px 30px;
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 5; /* Encima del marco */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* Tipografía */
+.dresscode-title {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #1f2d3d; /* Azul muy oscuro */
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.dresscode-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #3c5060;
+  margin-top: 20px;
+  font-size: 1rem;
+}
+
+.dresscode-text {
+  font-family: 'Montserrat', sans-serif; /* O una fuente 'handwritten' legible */
+  color: #2c3e50;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+/* Imagen de la pareja */
+.couple-icon {
+  width: 80px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  opacity: 0.8;
+}
+
+/* Flores Decorativas Específicas */
+.flower-corner {
+  position: absolute;
+  width: 180px;
+  z-index: 10; /* Encima del marco para tapar las esquinas */
+  pointer-events: none;
+}
+
+.flower-corner.top-right { top: 20px; right: 0px; transform: rotate(15deg); }
+.flower-corner.bottom-left { bottom: 20px; left: 0px; transform: scaleX(-1) rotate(-10deg); }
+
+/* Flor de agua gigante fondo (opcional) */
+.watermark-flower {
+  position: absolute;
+  top: -50px; left: -50px;
+  width: 400px;
+  opacity: 0.1; /* Muy sutil */
+  z-index: 0;
+  pointer-events: none;
 }
