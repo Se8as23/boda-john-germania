@@ -625,7 +625,7 @@ section {
 .blue-location-card {
   /* CAMBIO CLAVE: Usamos rgba para transparencia. 
      Los primeros 3 números son el color azul (#a3c2e0) y el 0.75 es la opacidad */
-  background-color: rgba(151, 209, 232, 0.75); 
+  background-color: rgb(215, 232, 239);; 
   
   /* Efecto de cristal esmerilado (backdrop-filter) para que sea vea borroso lo de atrás */
   backdrop-filter: blur(3px); 
@@ -636,7 +636,7 @@ section {
   border-radius: 20px;
   padding: 40px 20px;
   text-align: center;
-  color: white;
+  color: #3c5060;
   box-shadow: 0 10px 25px rgba(163, 194, 224, 0.3);
   position: relative;
   /* Ya no necesitamos el overflow hidden estricto si queremos ver bordes suaves */
@@ -662,7 +662,7 @@ section {
   font-weight: 400; /* No necesita negrita, es fina por naturaleza */
   
   /* Color azul acero */
-  color: #ffffff; 
+  color: #3c5060; 
   
   /* Fundamental para respetar tu mayúscula "A" */
   text-transform: none !important; 
@@ -697,7 +697,7 @@ section {
 .loc-line {
   width: 60px;
   height: 1px;
-  background-color: white;
+  background-color: #3c5060;
   margin: 5px 0;
   opacity: 0.7;
 }
@@ -850,7 +850,7 @@ section {
   position: relative;
   padding: 100px 20px;
   /* El mismo fondo base para mantener consistencia */
-  background-color: #d4e6f1;
+  background-color: #e3f2fd;
   background-image: url("https://www.transparenttextures.com/patterns/rice-paper-2.png");
   display: flex;
   justify-content: center;
@@ -870,7 +870,7 @@ section {
 /* La tarjeta central "burbuja azul" */
 .dresscode-card {
   /* Color azul un poco más oscuro que el fondo y semitransparente */
-  background-color: rgba(174, 214, 241, 0.6); 
+  background-color: rgb(215, 232, 239);
   backdrop-filter: blur(3px); /* Efecto vidrio suave */
   border-radius: 80px 80px 40px 40px; /* Forma de arco suave */
   padding: 50px 30px;
@@ -939,4 +939,139 @@ section {
   opacity: 0.1; /* Muy sutil */
   z-index: 0;
   pointer-events: none;
+}
+
+
+/* --- SECCIÓN REGALOS Y CONFIRMACIÓN (ESTILOS QUE FALTABAN) --- */
+
+.gifts-rsvp-section {
+  position: relative;
+  overflow: hidden;
+  flex-direction: column; 
+  align-items: center; 
+  gap: 40px; 
+}
+
+/* Burbuja de Regalos */
+.gift-bubble {
+  background-color: rgb(215, 232, 239);
+  backdrop-filter: blur(5px);
+  border-radius: 40px;
+  border: 1px solid #a3c2e0;
+  padding: 40px 30px;
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  position: relative;
+  z-index: 5;
+}
+
+.gift-title {
+  font-family: 'Pinyon Script', cursive;
+  font-size: 2.2rem;
+  color: #5472ae;
+  margin-bottom: 15px;
+}
+
+.gift-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  color: #455a64;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.mailbox-icon {
+  display: block;
+  margin: 15px auto; 
+  width: 160px; 
+  height: auto;
+  opacity: 1; 
+  filter: none; 
+  filter: drop-shadow(0 10px 10px rgba(0,0,0,0.15)); 
+}
+
+
+
+/* --- SECCIÓN CUENTA REGRESIVA --- */
+.countdown-section {
+  padding: 80px 20px;
+  /* Mismo fondo para continuidad */
+  background-color: #d4e6f1;
+  background-image: url("https://www.transparenttextures.com/patterns/rice-paper-2.png");
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.countdown-title {
+  font-family: 'Pinyon Script', cursive; /* Tu cursiva elegante */
+  font-size: 2.5rem;
+  color: #5e7385; /* Azul acero */
+  margin-bottom: 40px;
+  text-transform: none !important;
+}
+
+/* Contenedor del reloj */
+.timer-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alineado arriba para que los textos cuadren */
+  gap: 15px; /* Espacio entre números y dos puntos */
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Cada bloque de tiempo (Días, Horas...) */
+.time-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px; /* Ancho mínimo para que no bailen */
+}
+
+/* El número grande */
+.time-number {
+  font-family: 'Cinzel', serif; /* Fuente romana elegante */
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #6da0c2; /* Un azul un poco más vibrante como en tu foto */
+  line-height: 1;
+  /* Sombra sutil para que parezca impreso en relieve */
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8), -1px -1px 2px rgba(0,0,0,0.05);
+}
+
+/* La etiqueta pequeña (Días, Horas) */
+.time-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: #7a8b99;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+/* Los dos puntos (separadores) */
+.time-separator {
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
+  color: #8dbad6;
+  margin-top: 5px; /* Ajuste visual vertical */
+  animation: pulse-colon 1.5s infinite ease-in-out;
+}
+
+/* Animación de latido suave */
+@keyframes pulse-colon {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Ajuste móvil */
+@media (max-width: 600px) {
+  .time-number { font-size: 2.5rem; }
+  .time-separator { font-size: 1.5rem; margin-top: 10px; }
+  .timer-container { gap: 5px; }
+  .time-unit { min-width: 60px; }
 }
