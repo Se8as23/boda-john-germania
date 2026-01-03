@@ -160,7 +160,7 @@ function App() {
               <div className="tiktok-card" data-aos="fade-up">
                 <p className="tiktok-text">Con gran alegría queremos compartir contigo uno de los momentos más importantes de nuestras vidas.</p>
                 <br/>
-                <p className="tiktok-text">Hemos preparado este día con amor, esperando contar con tu presencia en este día tan especial.</p>
+                <p className="tiktok-text">Hemos preparado este día con amor, esperando contar con vuestra presencia en un día tan especial.</p>
                 <h2 className="tiktok-names nontranslate" translate='no'>John y Germania</h2>
               </div>
             </div>
@@ -213,7 +213,7 @@ function App() {
               </h2>
               
               <p className="wc-intro" style={{maxWidth: '450px', margin: '0 auto'}}>
-                Todos los días juntos son maravillosos y queremos que nos acompañen en el más importante para nosotros.
+                Todos los dias juntos son maravillosos y queremos que nos acompañen en el dia más importante de para nosotros.
               </p>
 
               <div className="hero-date" style={{marginTop: '30px', color: '#5472ae', borderTopColor: '#8faad4'}}>
@@ -352,7 +352,6 @@ function App() {
           >
             
             <img src={FLOR_AZUL} className="watermark-flower" alt="" />
-            <div className="thin-frame"></div>
             <img src={floresmarco2} className="flower-corner top-right" alt="decoracion" />
             <img src={floresmarco2} className="flower-corner bottom-left" alt="decoracion" />
 
