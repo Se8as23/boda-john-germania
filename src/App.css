@@ -802,13 +802,11 @@ section {
 
 /* Nombre del lugar en Cursiva */
 .reception-venue {
-  font-family: 'Pinyon Script', cursive; /* O 'Allura' si la preferiste */
-  font-size: 2.8rem;
-  color: #5e7385;
-  margin: 15px 0;
-  line-height: 1.1;
-  text-transform: none !important; /* Respetar mayúsculas/minúsculas */
-  font-weight: 400;
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.2rem;
+  margin: 10px 0;
+  line-height: 1.2;
+  color: #3c5060; /* Azul oscuro grisáceo */
 }
 
 /* Dirección y Hora */
@@ -1010,7 +1008,7 @@ section {
 
 .countdown-title {
   font-family: 'Pinyon Script', cursive; /* Tu cursiva elegante */
-  font-size: 3.3rem;
+  font-size: 3.1rem;
   color: #5e7385; /* Azul acero */
   margin-bottom: 40px;
   text-transform: none !important;
@@ -1135,18 +1133,5 @@ section {
 }
 
 
-.reception-venue {
-  font-family: 'Great Vibes', cursive;
-  font-size: 2.2rem;
-  margin: 10px 0;
-  line-height: 1.2;
-  text-transform: none !important;
-  font-weight: bold; /* Respetar mayúsculas/minúsculas */
-}
 
-.loc-venue-name {
-  font-family: 'Great Vibes', cursive;
-  font-size: 2.2rem;
-  margin: 10px 0;
-  line-height: 1.2;
-}
+
