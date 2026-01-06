@@ -158,9 +158,9 @@ function App() {
               <div className="tiktok-flap"></div>
               <div className="tiktok-seal">JG</div>
               <div className="tiktok-card" data-aos="fade-up">
-                <p className="tiktok-text">Con gran alegría queremos compartir contigo uno de los momentos más importantes de nuestras vidas.</p>
+                <p className="tiktok-text">Con gran alegría queremos compartir uno de los momentos más importantes de nuestras vidas.</p>
                 <br/>
-                <p className="tiktok-text">Hemos preparado este día con amor, esperando contar con vuestra presencia en un día tan especial.</p>
+                <p className="tiktok-text">Hemos preparado este día con amor, esperando contar con vuestra presencia en una fecha tan especial.</p>
                 <h2 className="tiktok-names nontranslate" translate='no'>John y Germania</h2>
               </div>
             </div>
@@ -213,7 +213,7 @@ function App() {
               </h2>
               
               <p className="wc-intro" style={{maxWidth: '450px', margin: '0 auto'}}>
-                Todos los dias juntos son maravillosos y queremos que nos acompañen en el dia más importante de para nosotros.
+                Todos los días juntos son maravillosos y queremos que nos acompañen en el día más importante para nosotros.
               </p>
 
               <div className="hero-date" style={{marginTop: '30px', color: '#5472ae', borderTopColor: '#8faad4'}}>
@@ -259,7 +259,6 @@ function App() {
                 </div>
               </div>
 
-              <div className="loc-time">17H00</div>
               <div className="loc-event-title">Ceremonia Religiosa</div>
 
               <span className="loc-icon-church"><img src={IGLESIA} alt="iglesia" width={100} /></span>
@@ -272,6 +271,7 @@ function App() {
               <p className="loc-address">
                 Vía Monay Baguanchi Paccha km 4 1/2, Cuenca
               </p>
+              <div className="loc-time">17H00</div>
 
               <a 
                 href="https://www.google.com/maps/place/Hosteria+Baguanchi/@-2.9176372,-78.9505078,17z/data=!3m1!4b1!4m9!3m8!1s0x91cd19e4a708ea93:0x16e03752e2a43e9f!5m2!4m1!1i2!8m2!3d-2.9176372!4d-78.9505078!16s%2Fg%2F1hc0wcddp?entry=tts&g_ep=EgoyMDI1MTIwOS4wIPu8ASoASAFQAw%3D%3D&skid=01be9fa5-b526-40cf-bd77-df8065e1c27d" 
@@ -308,7 +308,7 @@ function App() {
                 className="car-illustration"
               />
 
-              <h2 className="reception-venue">
+              <h2 className="reception-venue" >
                 Salón - Centro de Convenciones Baguanchi
               </h2>
 
@@ -316,7 +316,7 @@ function App() {
                 Vía Monay Baguanchi Paccha km 4 1/2, Cuenca
               </p>
               
-              <p className="reception-details" style={{fontSize: '1.1rem', marginTop: '10px'}}>
+              <p className="reception-details" style={{fontSize: '1.1rem', marginTop: '10px', marginBottom: '20px', fontWeight: '500'}}>
                 19H00
               </p>
 
@@ -373,7 +373,7 @@ function App() {
               
               <p className="dresscode-text">
                 Te agradecemos evitar el<br/>
-                <strong>color blanco</strong>.
+                <strong>color blanco, beige y celeste</strong>.
               </p>
 
             </div>
@@ -433,7 +433,7 @@ function App() {
               <div className="rsvp-buttons-container">
                 
                 <a 
-                  href="https://wa.me/593994050290?text=Hola,%20confirmo%20mi%20asistencia%20con%20la%20Germania" 
+                  href="https://wa.me/593994050290?text=Hola,%20confirmo%20mi%20asistencia%20y%20será%20un%20placer%20compartir%20este%20día%20con%20ustedes." 
                   target="_blank" 
                   rel="noreferrer"
                   className="btn-rsvp-big"
@@ -442,7 +442,7 @@ function App() {
                 </a>
 
                 <a 
-                  href="https://wa.me/593994463149?text=Hola,%20confirmo%20mi%20asistencia%20con%20el%20John" 
+                  href="https://wa.me/593994463149?text=Hola,%20confirmo%20mi%20asistencia%20y%20será%20un%20placer%20compartir%20este%20día%20con%20ustedes." 
                   target="_blank" 
                   rel="noreferrer"
                   className="btn-rsvp-big"
